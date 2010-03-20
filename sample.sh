@@ -18,7 +18,7 @@ echo "the log after one addition ..."
 git log --pretty=oneline
 
 # edit, commit cycle
-for i in {1..10} ; do
+for i in {1..4} ; do
   echo "item $i" >> data1.txt
   git commit -a -m "add item $i to data1.txt"
   echo "copy item $i" >> data2.txt
