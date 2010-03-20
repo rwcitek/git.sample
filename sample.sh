@@ -5,6 +5,7 @@
 ###
 
 # create a folder in which to work
+[ -d sample ] && { echo "sample directory already exists" ; exit 1 ; }
 mkdir sample
 cd sample
 
