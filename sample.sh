@@ -1,15 +1,22 @@
 #!/bin/bash
 
-# creates a sample data file for git to work with
+###
+# creates two sample data files for git to work with
+###
 
+# create a folder in which to work
 mkdir sample
 cd sample
+
+# initialize repository
 git init
 touch data1.txt data2.txt
 git add data1.txt data2.txt
 git commit -a -m "initial commit"
 echo "the log after one addition ..."
 git log --pretty=oneline
+
+# edit, commit cycle
 for i in {1..10} ; do
   echo "item $i" >> data1.txt
   git commit -a -m "add item $i to data1.txt"
