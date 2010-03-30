@@ -56,7 +56,15 @@ git log --pretty=oneline v01 -1
 
 # create a branch
 git branch exp v01
+git branch
 git show-branch --all --more=100
 
+# jump to exp branch
+git checkout exp
+git branch
+git show-branch --all --more=100
 
+# shrink exp branch back 6 snapshots
+git reset --hard exp~6
+git show-branch --all --more=100
 
