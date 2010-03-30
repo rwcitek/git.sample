@@ -73,8 +73,10 @@ git merge master
 git show-branch --all --more=100
 
 # look at tagged snapshot and create pseudo-branch.
-# you can checkout snapshots just like branches, except
-# they are like Teflon: you can take snapshots, but they don't stick
+# you can jump to snapshots just like branches,
+# except they are like Teflon: you can take snapshots,
+# but they don't stick.  When you jump again, they're gone.
+# valid snapshot names include sha1, nicknames, tags, relative branch names
 git checkout v01
 git branch -a
 git show-branch --all --more=100
@@ -83,4 +85,7 @@ echo "bad data" >> data1.txt
 git commit -a -m "add bad data to data1.txt"
 git log --pretty=oneline 
 git show-branch --all --more=100
+git checkout v01
+head -v data1.txt
+git log --pretty=oneline 
 
