@@ -16,7 +16,7 @@ git add data1.txt data2.txt
 git commit -a -m "initial commit"
 
 # edit, commit cycle
-for i in {1..10} ; do
+for i in {1..7} ; do
   echo "item $i" >> data1.txt
   git commit -a -m "add item $i to data1.txt"
   echo "copy item $i" >> data2.txt
