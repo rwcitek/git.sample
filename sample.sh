@@ -27,7 +27,7 @@ done > /dev/null
 
 # examine repository
 git log --pretty=oneline
-git branch
+git branch -a
 git show-branch --all --more=100 --sha1-name
 git show-branch --all --more=100
 
@@ -56,12 +56,12 @@ git log --pretty=oneline v01 -1
 
 # create a branch
 git branch exp v01
-git branch
+git branch -a
 git show-branch --all --more=100
 
 # jump to exp branch
 git checkout exp
-git branch
+git branch -a
 git show-branch --all --more=100
 
 # shrink exp branch back 6 snapshots
@@ -72,6 +72,15 @@ git show-branch --all --more=100
 git merge master
 git show-branch --all --more=100
 
-
-
+# look at tagged snapshot and create pseudo-branch.
+# you can checkout snapshots just like branches, except
+# they are like Teflon: you can take snapshots, but they don't stick
+git checkout v01
+git branch -a
+git show-branch --all --more=100
+git log --pretty=oneline 
+echo "bad data" >> data1.txt
+git commit -a -m "add bad data to data1.txt"
+git log --pretty=oneline 
+git show-branch --all --more=100
 
