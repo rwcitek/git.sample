@@ -68,3 +68,10 @@ git show-branch --all --more=100
 git reset --hard exp~6
 git show-branch --all --more=100
 
+# grow exp branch to be same as master
+git merge master
+git show-branch --all --more=100
+
+
+
+
