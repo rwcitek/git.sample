@@ -54,3 +54,9 @@ git tag -m "Version 1" v01 master~5
 git tag -n1
 git log --pretty=oneline v01 -1
 
+# create a branch
+git branch exp v01
+git show-branch --all --more=100
+
+
+
