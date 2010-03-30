@@ -29,3 +29,10 @@ git branch
 git show-branch --all --more=100 --sha1-name
 git show-branch --all --more=100
 
+# revert an edit
+head -v data1.txt
+echo "bad data" >> data1.txt
+head -v data1.txt
+git reset --hard master
+head -v data1.txt
+
