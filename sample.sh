@@ -23,6 +23,9 @@ for i in {1..10} ; do
   git commit -a -m "add item $i to data2.txt"
 done > /dev/null
 
-
-
+# examine repository
+git log --pretty=oneline
+git branch
+git show-branch --all --more=100 --sha1-name
+git show-branch --all --more=100
 
