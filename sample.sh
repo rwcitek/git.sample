@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 ###
 # creates two sample data files for git to work with
 ###
