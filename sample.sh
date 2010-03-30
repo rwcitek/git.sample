@@ -36,3 +36,14 @@ head -v data1.txt
 git reset --hard master
 head -v data1.txt
 
+# revert a commit
+git log --pretty=oneline
+head -v data1.txt
+echo "bad data" >> data1.txt
+git commit -a -m "add bad data to data1.txt"
+git log --pretty=oneline
+head -v data1.txt
+git reset --hard master~1
+head -v data1.txt
+git log --pretty=oneline
+
