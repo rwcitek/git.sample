@@ -7,7 +7,7 @@ set -x
 ###
 
 # create a folder in which to work
-[ -d sample ] && { echo "sample directory already exists" ; exit 1 ; }
+[ -d myProj ] && { echo "myProj directory already exists" ; exit 1 ; }
 mkdir myProj
 cd myProj
 
@@ -110,13 +110,10 @@ git show-branch --all --more=100
 
 # update origin/master from remote repository and merge in one step
 git pull http://github.com/rwcitek/git.sample.git master
+git show-branch --all --more=100
 
 # update origin/ from current branch and update remote repository from origin/
-git push
-
-
-
-
-
-
+# need to provide git or ssh url, http is read-only
+git push git@github.com:rwcitek/git.sample.git
+git show-branch --all --more=100
 
