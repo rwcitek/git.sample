@@ -89,3 +89,34 @@ git checkout v01
 head -v data1.txt
 git log --pretty=oneline 
 
+# clone a remote repository
+# note that local copy of remote branch is called origin/
+git clone http://github.com/rwcitek/git.sample.git
+cd git.sample/
+git show-branch --all --more=100
+git branch -a
+
+# shrink master branch
+git reset --hard 15bb7c9
+git show-branch --all --more=100
+
+# grow master branch using merge with origin/
+git merge origin/master~5
+git show-branch --all --more=100
+
+# update origin/ with remote repository
+git fetch
+git show-branch --all --more=100
+
+# update origin/master from remote repository and merge in one step
+git pull http://github.com/rwcitek/git.sample.git master
+
+# update origin/ from current branch and update remote repository from origin/
+git push
+
+
+
+
+
+
+
