@@ -112,8 +112,11 @@ git show-branch --all --more=100
 git pull http://github.com/rwcitek/git.sample.git master
 git show-branch --all --more=100
 
-# update origin/ from current branch and update remote repository from origin/
+# update remote repository from current branch
+# ... and update origin/ from remote repository
 # need to provide git or ssh url, http is read-only
 git push git@github.com:rwcitek/git.sample.git
+git show-branch --all --more=100
+git fetch
 git show-branch --all --more=100
 
