@@ -14291,7 +14291,7 @@ mkdir -p ~/git.part-2/
 docker <span class="se">\</span>
     run <span class="se">\</span>
     --rm <span class="se">\</span>
-    -p localhost:5150:8888 <span class="se">\</span>
+    -p <span class="m">127</span>.0.0.1:5150:8888 <span class="se">\</span>
     -e <span class="nv">JUPYTER_ENABLE_LAB</span><span class="o">=</span>yes <span class="se">\</span>
     -v <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">&quot;</span>:/home/jovyan/work <span class="se">\</span>
     --name jupyter-lab <span class="se">\</span>
