@@ -14308,7 +14308,7 @@ docker <span class="se">\</span>
 <span class="c1">## install packages</span>
 <span class="o">{</span> cat <span class="s">&lt;&lt;eof</span>
 <span class="s">apt-get update</span>
-<span class="s">apt-get install -y ruby tree less file rsync</span>
+<span class="s">apt-get install -y ruby tree less file rsync pandoc</span>
 <span class="s">pip install bash_kernel</span>
 <span class="s">python -m bash_kernel.install</span>
 
@@ -14355,6 +14355,20 @@ docker <span class="nb">exec</span> -i jupyter-lab /bin/bash -c <span class="s1"
 docker <span class="nb">exec</span> -it jupyter-lab /bin/bash
 <span class="c1">## as root</span>
 docker <span class="nb">exec</span> -it -u root jupyter-lab /bin/bash
+</pre></div>
+<hr>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="c1"># Clear all outputs from notebooks and convert to HTML with output</span>
+rm -rf html
+mkdir -p html
+<span class="k">for</span> nb <span class="k">in</span> *.ipynb <span class="p">;</span> <span class="k">do</span>
+    jupyter nbconvert --to notebook --clear-output --inplace <span class="si">${</span><span class="nv">nb</span><span class="si">}</span>
+    jupyter nbconvert --to html --execute --output html/<span class="si">${</span><span class="nv">nb</span><span class="p">%.ipynb</span><span class="si">}</span> <span class="si">${</span><span class="nv">nb</span><span class="si">}</span>
+<span class="k">done</span>
 </pre></div>
 <hr>
 

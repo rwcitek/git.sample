@@ -14296,7 +14296,7 @@ tree example.repo.02
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>example.repo.02
+<pre><span class="ansi-blue-intense-fg ansi-bold">example.repo.02</span>
 
 0 directories, 0 files
 </pre>
@@ -14447,8 +14447,8 @@ nothing to commit (create/copy files and use &#34;git add&#34; to track)
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>user.email=you@example.com
-user.name=Your Name
+<pre><span class="ansi-red-intense-fg ansi-bold">user</span>.email=you@example.com
+<span class="ansi-red-intense-fg ansi-bold">user</span>.name=Your Name
 </pre>
 </div>
 </div>
@@ -14484,7 +14484,7 @@ user.name=Your Name
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>total 4
-drwxr-xr-x 7 jovyan users 4096 Jun 14 18:14 .git
+drwxr-xr-x 7 jovyan users 4096 Jun 14 20:23 <span class="ansi-blue-intense-fg ansi-bold">.git</span>
 </pre>
 </div>
 </div>
@@ -14552,8 +14552,8 @@ ls -lA
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>total 8
--rw-r--r-- 1 jovyan users   13 Jun 14 18:14 file.001
-drwxr-xr-x 7 jovyan users 4096 Jun 14 18:14 .git
+-rw-r--r-- 1 jovyan users   13 Jun 14 20:23 file.001
+drwxr-xr-x 7 jovyan users 4096 Jun 14 20:23 <span class="ansi-blue-intense-fg ansi-bold">.git</span>
 </pre>
 </div>
 </div>
@@ -14645,7 +14645,7 @@ No commits yet
 
 Changes to be committed:
   (use &#34;git rm --cached &lt;file&gt;...&#34; to unstage)
-	new file:   file.001
+	<span class="ansi-green-fg">new file:   file.001</span>
 
 </pre>
 </div>
@@ -14681,7 +14681,7 @@ Changes to be committed:
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[master (root-commit) 81563f2] file number one
+<pre>[master (root-commit) 8cb811d] file number one
  1 file changed, 1 insertion(+)
  create mode 100644 file.001
 </pre>
@@ -14754,9 +14754,9 @@ nothing to commit, working tree clean
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>commit 81563f28ecf640a1100fb682b363a340d0d99a76 (HEAD -&gt; master)
+<pre><span class="ansi-yellow-fg">commit 8cb811d19b913b6d5905e59d607ddbba7411a4ba</span><span class="ansi-yellow-fg"> (</span><span class="ansi-cyan-intense-fg ansi-bold">HEAD -&gt; </span><span class="ansi-green-intense-fg ansi-bold">master</span><span class="ansi-yellow-fg">)</span>
 Author: Your Name &lt;you@example.com&gt;
-Date:   Mon Jun 14 18:14:23 2021 +0000
+Date:   Mon Jun 14 20:23:46 2021 +0000
 
     file number one
 </pre>
@@ -14864,7 +14864,7 @@ cat -n file.001
 Changes not staged for commit:
   (use &#34;git add &lt;file&gt;...&#34; to update what will be committed)
   (use &#34;git restore &lt;file&gt;...&#34; to discard changes in working directory)
-	modified:   file.001
+	<span class="ansi-red-fg">modified:   file.001</span>
 
 no changes added to commit (use &#34;git add&#34; and/or &#34;git commit -a&#34;)
 </pre>
@@ -14901,13 +14901,13 @@ no changes added to commit (use &#34;git add&#34; and/or &#34;git commit -a&#34;
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>diff --git a/file.001 b/file.001
-index a5c1966..34a27f7 100644
---- a/file.001
-+++ b/file.001
-@@ -1 +1 @@
--Hello, world
-+Greetings, earthlings
+<pre><span class="ansi-bold">diff --git a/file.001 b/file.001</span>
+<span class="ansi-bold">index a5c1966..34a27f7 100644</span>
+<span class="ansi-bold">--- a/file.001</span>
+<span class="ansi-bold">+++ b/file.001</span>
+<span class="ansi-cyan-fg">@@ -1 +1 @@</span>
+<span class="ansi-red-fg">-Hello, world</span>
+<span class="ansi-green-fg">+</span><span class="ansi-green-fg">Greetings, earthlings</span>
 </pre>
 </div>
 </div>
@@ -14957,7 +14957,7 @@ index a5c1966..34a27f7 100644
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[master 9b0fbe7] changed salutation in file.001
+<pre>[master 2e5dcaf] changed salutation in file.001
  1 file changed, 1 insertion(+), 1 deletion(-)
 </pre>
 </div>
@@ -15029,15 +15029,15 @@ nothing to commit, working tree clean
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>commit 9b0fbe72a91b78292d74f7b2c78b8cca49890837 (HEAD -&gt; master)
+<pre><span class="ansi-yellow-fg">commit 2e5dcaf91b879ef524799f5743bb031be38f4df1</span><span class="ansi-yellow-fg"> (</span><span class="ansi-cyan-intense-fg ansi-bold">HEAD -&gt; </span><span class="ansi-green-intense-fg ansi-bold">master</span><span class="ansi-yellow-fg">)</span>
 Author: Your Name &lt;you@example.com&gt;
-Date:   Mon Jun 14 18:14:24 2021 +0000
+Date:   Mon Jun 14 20:23:46 2021 +0000
 
     changed salutation in file.001
 
-commit 81563f28ecf640a1100fb682b363a340d0d99a76
+<span class="ansi-yellow-fg">commit 8cb811d19b913b6d5905e59d607ddbba7411a4ba</span>
 Author: Your Name &lt;you@example.com&gt;
-Date:   Mon Jun 14 18:14:23 2021 +0000
+Date:   Mon Jun 14 20:23:46 2021 +0000
 
     file number one
 </pre>
@@ -15091,9 +15091,9 @@ ls -lA
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>total 12
--rw-r--r-- 1 jovyan users   22 Jun 14 18:14 file.001
--rw-r--r-- 1 jovyan users   23 Jun 14 18:14 file.002
-drwxr-xr-x 8 jovyan users 4096 Jun 14 18:14 .git
+-rw-r--r-- 1 jovyan users   22 Jun 14 20:23 file.001
+-rw-r--r-- 1 jovyan users   23 Jun 14 20:23 file.002
+drwxr-xr-x 8 jovyan users 4096 Jun 14 20:23 <span class="ansi-blue-intense-fg ansi-bold">.git</span>
 </pre>
 </div>
 </div>
@@ -15179,7 +15179,7 @@ git commit -m <span class="s2">&quot;new file file.002&quot;</span>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[master 4f88810] new file file.002
+<pre>[master 381620f] new file file.002
  1 file changed, 1 insertion(+)
  create mode 100644 file.002
 </pre>
@@ -15216,21 +15216,21 @@ git commit -m <span class="s2">&quot;new file file.002&quot;</span>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>commit 4f8881078db004a89c4e78cad0f7bd91e48b2712 (HEAD -&gt; master)
+<pre><span class="ansi-yellow-fg">commit 381620f82865ad1afd5a629a8b2cfd439afd35f0</span><span class="ansi-yellow-fg"> (</span><span class="ansi-cyan-intense-fg ansi-bold">HEAD -&gt; </span><span class="ansi-green-intense-fg ansi-bold">master</span><span class="ansi-yellow-fg">)</span>
 Author: Your Name &lt;you@example.com&gt;
-Date:   Mon Jun 14 18:14:25 2021 +0000
+Date:   Mon Jun 14 20:23:47 2021 +0000
 
     new file file.002
 
-commit 9b0fbe72a91b78292d74f7b2c78b8cca49890837
+<span class="ansi-yellow-fg">commit 2e5dcaf91b879ef524799f5743bb031be38f4df1</span>
 Author: Your Name &lt;you@example.com&gt;
-Date:   Mon Jun 14 18:14:24 2021 +0000
+Date:   Mon Jun 14 20:23:46 2021 +0000
 
     changed salutation in file.001
 
-commit 81563f28ecf640a1100fb682b363a340d0d99a76
+<span class="ansi-yellow-fg">commit 8cb811d19b913b6d5905e59d607ddbba7411a4ba</span>
 Author: Your Name &lt;you@example.com&gt;
-Date:   Mon Jun 14 18:14:23 2021 +0000
+Date:   Mon Jun 14 20:23:46 2021 +0000
 
     file number one
 </pre>

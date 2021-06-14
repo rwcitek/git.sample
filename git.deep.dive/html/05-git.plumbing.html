@@ -14377,8 +14377,8 @@ nothing to commit (create/copy files and use &#34;git add&#34; to track)
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>user.email=you@example.com
-user.name=Your Name
+<pre><span class="ansi-red-intense-fg ansi-bold">user</span>.email=you@example.com
+<span class="ansi-red-intense-fg ansi-bold">user</span>.name=Your Name
 </pre>
 </div>
 </div>
@@ -14413,9 +14413,9 @@ user.name=Your Name
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>.git/objects
-├── info
-└── pack
+<pre><span class="ansi-blue-intense-fg ansi-bold">.git/objects</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">info</span>
+└── <span class="ansi-blue-intense-fg ansi-bold">pack</span>
 
 2 directories, 0 files
 </pre>
@@ -14469,8 +14469,8 @@ ls -lA
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>total 8
--rw-r--r-- 1 jovyan users   13 Jun 14 18:15 file.001
-drwxr-xr-x 7 jovyan users 4096 Jun 14 18:15 .git
+-rw-r--r-- 1 jovyan users   13 Jun 14 20:24 file.001
+drwxr-xr-x 7 jovyan users 4096 Jun 14 20:24 <span class="ansi-blue-intense-fg ansi-bold">.git</span>
 </pre>
 </div>
 </div>
@@ -14582,11 +14582,11 @@ git hash-object -w file.001
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>.git/objects
-├── a5
+<pre><span class="ansi-blue-intense-fg ansi-bold">.git/objects</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">a5</span>
 │   └── c19667710254f835085b99726e523457150e03
-├── info
-└── pack
+├── <span class="ansi-blue-intense-fg ansi-bold">info</span>
+└── <span class="ansi-blue-intense-fg ansi-bold">pack</span>
 
 3 directories, 1 file
 </pre>
@@ -14716,13 +14716,13 @@ git hash-object -w file.001
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>.git/objects
-├── 34
+<pre><span class="ansi-blue-intense-fg ansi-bold">.git/objects</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">34</span>
 │   └── a27f74d7d73cd456ce426bfa20bffcfb8fd11c
-├── a5
+├── <span class="ansi-blue-intense-fg ansi-bold">a5</span>
 │   └── c19667710254f835085b99726e523457150e03
-├── info
-└── pack
+├── <span class="ansi-blue-intense-fg ansi-bold">info</span>
+└── <span class="ansi-blue-intense-fg ansi-bold">pack</span>
 
 4 directories, 2 files
 </pre>
@@ -14783,8 +14783,8 @@ cat file.001
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>total 8
--rw-r--r-- 1 jovyan users   22 Jun 14 18:15 file.001
-drwxr-xr-x 7 jovyan users 4096 Jun 14 18:15 .git
+-rw-r--r-- 1 jovyan users   22 Jun 14 20:24 file.001
+drwxr-xr-x 7 jovyan users 4096 Jun 14 20:24 <span class="ansi-blue-intense-fg ansi-bold">.git</span>
 Greetings, earthlings
 </pre>
 </div>
@@ -15290,9 +15290,9 @@ ls -lA
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>total 12
--rw-r--r-- 1 jovyan users   13 Jun 14 18:15 file.001
--rw-r--r-- 1 jovyan users   23 Jun 14 18:15 file.002
-drwxr-xr-x 7 jovyan users 4096 Jun 14 18:15 .git
+-rw-r--r-- 1 jovyan users   13 Jun 14 20:24 file.001
+-rw-r--r-- 1 jovyan users   23 Jun 14 20:24 file.002
+drwxr-xr-x 7 jovyan users 4096 Jun 14 20:24 <span class="ansi-blue-intense-fg ansi-bold">.git</span>
 </pre>
 </div>
 </div>
@@ -15490,7 +15490,7 @@ Greetings, earthlings
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>55fa54b59bcde4aa07307798e629e705269fce66
+<pre>5d5ed823effcdbf64da5030d14b62497ac1e940d
 </pre>
 </div>
 </div>
@@ -15526,8 +15526,8 @@ Greetings, earthlings
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>tree a13eb9d02b9ee2c2f0d073bbc65d91a18c7e7316
-author Your Name &lt;you@example.com&gt; 1623694509 +0000
-committer Your Name &lt;you@example.com&gt; 1623694509 +0000
+author Your Name &lt;you@example.com&gt; 1623702258 +0000
+committer Your Name &lt;you@example.com&gt; 1623702258 +0000
 
 file number one
 </pre>
@@ -15575,10 +15575,10 @@ Hello, world ... again
 == 34a27f74d7d73cd456ce426bfa20bffcfb8fd11c blob
 Greetings, earthlings
 
-== 55fa54b59bcde4aa07307798e629e705269fce66 commit
+== 5d5ed823effcdbf64da5030d14b62497ac1e940d commit
 tree a13eb9d02b9ee2c2f0d073bbc65d91a18c7e7316
-author Your Name &lt;you@example.com&gt; 1623694509 +0000
-committer Your Name &lt;you@example.com&gt; 1623694509 +0000
+author Your Name &lt;you@example.com&gt; 1623702258 +0000
+committer Your Name &lt;you@example.com&gt; 1623702258 +0000
 
 file number one
 
@@ -15645,7 +15645,7 @@ Hello, world
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>674c9e8cd4b5080d2515fcec22e33b4ba20406c5
+<pre>b50989f563e714c4bbf7e15fedde106a8b73c347
 </pre>
 </div>
 </div>
@@ -15691,20 +15691,12 @@ Hello, world ... again
 == 34a27f74d7d73cd456ce426bfa20bffcfb8fd11c blob
 Greetings, earthlings
 
-== 55fa54b59bcde4aa07307798e629e705269fce66 commit
+== 5d5ed823effcdbf64da5030d14b62497ac1e940d commit
 tree a13eb9d02b9ee2c2f0d073bbc65d91a18c7e7316
-author Your Name &lt;you@example.com&gt; 1623694509 +0000
-committer Your Name &lt;you@example.com&gt; 1623694509 +0000
+author Your Name &lt;you@example.com&gt; 1623702258 +0000
+committer Your Name &lt;you@example.com&gt; 1623702258 +0000
 
 file number one
-
-== 674c9e8cd4b5080d2515fcec22e33b4ba20406c5 commit
-tree 7f1ba4b839316dc6e92966a7ee62ed91bc276160
-parent 55fa54b59bcde4aa07307798e629e705269fce66
-author Your Name &lt;you@example.com&gt; 1623694510 +0000
-committer Your Name &lt;you@example.com&gt; 1623694510 +0000
-
-changed salutation in file.001
 
 == 7f1ba4b839316dc6e92966a7ee62ed91bc276160 tree
 100644 blob 34a27f74d7d73cd456ce426bfa20bffcfb8fd11c	file.001
@@ -15714,6 +15706,14 @@ changed salutation in file.001
 
 == a5c19667710254f835085b99726e523457150e03 blob
 Hello, world
+
+== b50989f563e714c4bbf7e15fedde106a8b73c347 commit
+tree 7f1ba4b839316dc6e92966a7ee62ed91bc276160
+parent 5d5ed823effcdbf64da5030d14b62497ac1e940d
+author Your Name &lt;you@example.com&gt; 1623702258 +0000
+committer Your Name &lt;you@example.com&gt; 1623702258 +0000
+
+changed salutation in file.001
 
 == e1df30a01c2ae55e964a8f9171bc19289caa3265 tree
 100644 blob 34a27f74d7d73cd456ce426bfa20bffcfb8fd11c	file.001
@@ -15769,7 +15769,7 @@ Hello, world
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>46a50c039ab4022bd7e55f3dfaf22a2aa031d77a
+<pre>3e85516dcfc3605432ccff45a9e97905eeffe234
 </pre>
 </div>
 </div>
@@ -15815,28 +15815,20 @@ Hello, world ... again
 == 34a27f74d7d73cd456ce426bfa20bffcfb8fd11c blob
 Greetings, earthlings
 
-== 46a50c039ab4022bd7e55f3dfaf22a2aa031d77a commit
+== 3e85516dcfc3605432ccff45a9e97905eeffe234 commit
 tree e1df30a01c2ae55e964a8f9171bc19289caa3265
-parent 674c9e8cd4b5080d2515fcec22e33b4ba20406c5
-author Your Name &lt;you@example.com&gt; 1623694510 +0000
-committer Your Name &lt;you@example.com&gt; 1623694510 +0000
+parent b50989f563e714c4bbf7e15fedde106a8b73c347
+author Your Name &lt;you@example.com&gt; 1623702259 +0000
+committer Your Name &lt;you@example.com&gt; 1623702259 +0000
 
 new file file.002
 
-== 55fa54b59bcde4aa07307798e629e705269fce66 commit
+== 5d5ed823effcdbf64da5030d14b62497ac1e940d commit
 tree a13eb9d02b9ee2c2f0d073bbc65d91a18c7e7316
-author Your Name &lt;you@example.com&gt; 1623694509 +0000
-committer Your Name &lt;you@example.com&gt; 1623694509 +0000
+author Your Name &lt;you@example.com&gt; 1623702258 +0000
+committer Your Name &lt;you@example.com&gt; 1623702258 +0000
 
 file number one
-
-== 674c9e8cd4b5080d2515fcec22e33b4ba20406c5 commit
-tree 7f1ba4b839316dc6e92966a7ee62ed91bc276160
-parent 55fa54b59bcde4aa07307798e629e705269fce66
-author Your Name &lt;you@example.com&gt; 1623694510 +0000
-committer Your Name &lt;you@example.com&gt; 1623694510 +0000
-
-changed salutation in file.001
 
 == 7f1ba4b839316dc6e92966a7ee62ed91bc276160 tree
 100644 blob 34a27f74d7d73cd456ce426bfa20bffcfb8fd11c	file.001
@@ -15846,6 +15838,14 @@ changed salutation in file.001
 
 == a5c19667710254f835085b99726e523457150e03 blob
 Hello, world
+
+== b50989f563e714c4bbf7e15fedde106a8b73c347 commit
+tree 7f1ba4b839316dc6e92966a7ee62ed91bc276160
+parent 5d5ed823effcdbf64da5030d14b62497ac1e940d
+author Your Name &lt;you@example.com&gt; 1623702258 +0000
+committer Your Name &lt;you@example.com&gt; 1623702258 +0000
+
+changed salutation in file.001
 
 == e1df30a01c2ae55e964a8f9171bc19289caa3265 tree
 100644 blob 34a27f74d7d73cd456ce426bfa20bffcfb8fd11c	file.001
@@ -15890,31 +15890,31 @@ Hello, world
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>commit 46a50c039ab4022bd7e55f3dfaf22a2aa031d77a
+<pre><span class="ansi-yellow-fg">commit 3e85516dcfc3605432ccff45a9e97905eeffe234</span>
 Author: Your Name &lt;you@example.com&gt;
-Date:   Mon Jun 14 18:15:10 2021 +0000
+Date:   Mon Jun 14 20:24:19 2021 +0000
 
     new file file.002
 
- file.002 | 1 +
+ file.002 | 1 <span class="ansi-green-fg">+</span>
  1 file changed, 1 insertion(+)
 
-commit 674c9e8cd4b5080d2515fcec22e33b4ba20406c5
+<span class="ansi-yellow-fg">commit b50989f563e714c4bbf7e15fedde106a8b73c347</span>
 Author: Your Name &lt;you@example.com&gt;
-Date:   Mon Jun 14 18:15:10 2021 +0000
+Date:   Mon Jun 14 20:24:18 2021 +0000
 
     changed salutation in file.001
 
- file.001 | 2 +-
+ file.001 | 2 <span class="ansi-green-fg">+</span><span class="ansi-red-fg">-</span>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-commit 55fa54b59bcde4aa07307798e629e705269fce66
+<span class="ansi-yellow-fg">commit 5d5ed823effcdbf64da5030d14b62497ac1e940d</span>
 Author: Your Name &lt;you@example.com&gt;
-Date:   Mon Jun 14 18:15:09 2021 +0000
+Date:   Mon Jun 14 20:24:18 2021 +0000
 
     file number one
 
- file.001 | 1 +
+ file.001 | 1 <span class="ansi-green-fg">+</span>
  1 file changed, 1 insertion(+)
 </pre>
 </div>
@@ -16234,9 +16234,9 @@ sed -z <span class="s1">&#39;1d&#39;</span>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>.git/refs
-├── heads
-└── tags
+<pre><span class="ansi-blue-intense-fg ansi-bold">.git/refs</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">heads</span>
+└── <span class="ansi-blue-intense-fg ansi-bold">tags</span>
 
 2 directories, 0 files
 </pre>
@@ -16276,9 +16276,9 @@ git log --pretty<span class="o">=</span>oneline master
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>46a50c039ab4022bd7e55f3dfaf22a2aa031d77a (HEAD -&gt; master) new file file.002
-674c9e8cd4b5080d2515fcec22e33b4ba20406c5 changed salutation in file.001
-55fa54b59bcde4aa07307798e629e705269fce66 file number one
+<pre><span class="ansi-yellow-fg">3e85516dcfc3605432ccff45a9e97905eeffe234</span><span class="ansi-yellow-fg"> (</span><span class="ansi-cyan-intense-fg ansi-bold">HEAD -&gt; </span><span class="ansi-green-intense-fg ansi-bold">master</span><span class="ansi-yellow-fg">)</span> new file file.002
+<span class="ansi-yellow-fg">b50989f563e714c4bbf7e15fedde106a8b73c347</span> changed salutation in file.001
+<span class="ansi-yellow-fg">5d5ed823effcdbf64da5030d14b62497ac1e940d</span> file number one
 </pre>
 </div>
 </div>
@@ -16321,9 +16321,9 @@ git log --pretty<span class="o">=</span>oneline master
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>46a50c039ab4022bd7e55f3dfaf22a2aa031d77a (HEAD -&gt; master) new file file.002
-674c9e8cd4b5080d2515fcec22e33b4ba20406c5 changed salutation in file.001
-55fa54b59bcde4aa07307798e629e705269fce66 file number one
+<pre><span class="ansi-yellow-fg">3e85516dcfc3605432ccff45a9e97905eeffe234</span><span class="ansi-yellow-fg"> (</span><span class="ansi-cyan-intense-fg ansi-bold">HEAD -&gt; </span><span class="ansi-green-intense-fg ansi-bold">master</span><span class="ansi-yellow-fg">)</span> new file file.002
+<span class="ansi-yellow-fg">b50989f563e714c4bbf7e15fedde106a8b73c347</span> changed salutation in file.001
+<span class="ansi-yellow-fg">5d5ed823effcdbf64da5030d14b62497ac1e940d</span> file number one
 </pre>
 </div>
 </div>
@@ -16375,8 +16375,8 @@ git log --pretty<span class="o">=</span>oneline <span class="nb">test</span>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>674c9e8cd4b5080d2515fcec22e33b4ba20406c5 (test) changed salutation in file.001
-55fa54b59bcde4aa07307798e629e705269fce66 file number one
+<pre><span class="ansi-yellow-fg">b50989f563e714c4bbf7e15fedde106a8b73c347</span><span class="ansi-yellow-fg"> (</span><span class="ansi-green-intense-fg ansi-bold">test</span><span class="ansi-yellow-fg">)</span> changed salutation in file.001
+<span class="ansi-yellow-fg">5d5ed823effcdbf64da5030d14b62497ac1e940d</span> file number one
 </pre>
 </div>
 </div>
@@ -16411,7 +16411,7 @@ git log --pretty<span class="o">=</span>oneline <span class="nb">test</span>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>* master
+<pre>* <span class="ansi-green-fg">master</span>
   test
 </pre>
 </div>
@@ -16601,7 +16601,7 @@ Switched to branch &#39;test&#39;
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>  master
-* test
+* <span class="ansi-green-fg">test</span>
 </pre>
 </div>
 </div>
@@ -16673,7 +16673,7 @@ cat .git/HEAD
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>* master
+<pre>* <span class="ansi-green-fg">master</span>
   test
 </pre>
 </div>
@@ -16725,7 +16725,7 @@ tree .git/refs/tags
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>.git/refs/tags
+<pre><span class="ansi-blue-intense-fg ansi-bold">.git/refs/tags</span>
 
 0 directories, 0 files
 </pre>
@@ -16814,7 +16814,7 @@ tree .git/refs/tags
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>.git/refs/tags
+<pre><span class="ansi-blue-intense-fg ansi-bold">.git/refs/tags</span>
 └── v1.0
 
 0 directories, 1 file
@@ -16853,7 +16853,7 @@ cat .git/refs/tags/v1.0
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>55fa54b59bcde4aa07307798e629e705269fce66
+<pre>5d5ed823effcdbf64da5030d14b62497ac1e940d
 </pre>
 </div>
 </div>
@@ -16897,7 +16897,7 @@ cat -n
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>git cat-file -t 55fa54b59bcde4aa07307798e629e705269fce66 
+<pre>git cat-file -t 5d5ed823effcdbf64da5030d14b62497ac1e940d 
      1	commit
 </pre>
 </div>
@@ -16936,10 +16936,10 @@ cat -n
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>git cat-file -p 55fa54b59bcde4aa07307798e629e705269fce66 
+<pre>git cat-file -p 5d5ed823effcdbf64da5030d14b62497ac1e940d 
      1	tree a13eb9d02b9ee2c2f0d073bbc65d91a18c7e7316
-     2	author Your Name &lt;you@example.com&gt; 1623694509 +0000
-     3	committer Your Name &lt;you@example.com&gt; 1623694509 +0000
+     2	author Your Name &lt;you@example.com&gt; 1623702258 +0000
+     3	committer Your Name &lt;you@example.com&gt; 1623702258 +0000
      4	
      5	file number one
 </pre>
@@ -17034,7 +17034,7 @@ tree .git/refs/tags/
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>.git/refs/tags/
+<pre><span class="ansi-blue-intense-fg ansi-bold">.git/refs/tags/</span>
 ├── v1.0
 └── v1.1
 
@@ -17074,7 +17074,7 @@ cat .git/refs/tags/v1.1
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>8b603cd1eaa4e59a18322da29a62200d1605b2dd
+<pre>d0d2dfd4139212be760a337a4b6fc80a4e81c63b
 </pre>
 </div>
 </div>
@@ -17112,7 +17112,7 @@ cat -n
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>git cat-file -t 8b603cd1eaa4e59a18322da29a62200d1605b2dd 
+<pre>git cat-file -t d0d2dfd4139212be760a337a4b6fc80a4e81c63b 
      1	tag
 </pre>
 </div>
@@ -17151,11 +17151,11 @@ cat -n
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>git cat-file -p 8b603cd1eaa4e59a18322da29a62200d1605b2dd 
-     1	object 674c9e8cd4b5080d2515fcec22e33b4ba20406c5
+<pre>git cat-file -p d0d2dfd4139212be760a337a4b6fc80a4e81c63b 
+     1	object b50989f563e714c4bbf7e15fedde106a8b73c347
      2	type commit
      3	tag v1.1
-     4	tagger Your Name &lt;you@example.com&gt; 1623694516 +0000
+     4	tagger Your Name &lt;you@example.com&gt; 1623702265 +0000
      5	
      6	Test tag
 </pre>
