@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>my.setup</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>04b-graphs</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,121 +14259,776 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="My-setup">My setup<a class="anchor-link" href="#My-setup">&#182;</a></h1>
+<h1 id="Graphs-with-graphviz">Graphs with graphviz<a class="anchor-link" href="#Graphs-with-graphviz">&#182;</a></h1>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>I am running docker container on an AWS EC2 instance then ssh'ing into the instance and tunneling port 5150 to forward the Jupyter Lab connection.</p>
-<hr>
+<p>From <a href="https://h1ros.github.io/posts/introduction-to-graphviz-in-jupyter-notebook/">https://h1ros.github.io/posts/introduction-to-graphviz-in-jupyter-notebook/</a></p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="c1"># ssh to AWS EC2 instance</span>
-<span class="nv">ip</span><span class="o">={</span> public IP from AWS <span class="o">}</span>
-ssh <span class="se">\</span>
-    -i ~/.ssh/aws2021.pem <span class="se">\</span>
-    -p <span class="m">22</span> <span class="se">\</span>
-    -L localhost:8080:localhost:5150 <span class="se">\</span>
-    ubuntu@<span class="si">${</span><span class="nv">ip</span><span class="si">}</span>
+<h2 id="Basic-Usage">Basic Usage<a class="anchor-link" href="#Basic-Usage">&#182;</a></h2><p>A graph is a collection of zero or more nodes ( vertices ) and zero or more edges that connect the nodes.  All nodes have an unique identifier (ID) and optionally some metadata.</p>
+<p>Edges can be undirected or directed.  We'll be using only directed edges.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Digraph</span>
 </pre></div>
-<hr>
 
+     </div>
 </div>
+</div>
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="c1"># Launch container instance</span>
-mkdir -p ~/git.part-2/
-<span class="nb">cd</span> ~/git.part-2/
-docker <span class="se">\</span>
-    run <span class="se">\</span>
-    --rm <span class="se">\</span>
-    -p <span class="m">127</span>.0.0.1:5150:8888 <span class="se">\</span>
-    -e <span class="nv">JUPYTER_ENABLE_LAB</span><span class="o">=</span>yes <span class="se">\</span>
-    -v <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">&quot;</span>:/home/jovyan/work <span class="se">\</span>
-    --name jupyter-lab <span class="se">\</span>
-    jupyter/datascience-notebook:396024a4ddc1 <span class="se">\</span>
-    &gt;<span class="p">&amp;</span> /tmp/docker.log <span class="p">&amp;</span>
+<h3 id="Graph-with-Two-Nodes">Graph with Two Nodes<a class="anchor-link" href="#Graph-with-Two-Nodes">&#182;</a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Digraph object</span>
+<span class="n">dot</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes 1 and 2</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s2">&quot;ID: 1&quot;</span><span class="p">)</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s2">&quot;ID: 2&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualize the graph</span>
+<span class="n">dot</span>
 </pre></div>
-<hr>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
+
+
+
+<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="158pt" height="44pt"
+ viewBox="0.00 0.00 158.29 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>%3</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-40 154.29,-40 154.29,4 -4,4"/>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="black" cx="33.15" cy="-18" rx="33.29" ry="18"/>
+<text text-anchor="middle" x="33.15" y="-14.3" font-family="Times,serif" font-size="14.00">ID: 1</text>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="black" cx="117.15" cy="-18" rx="33.29" ry="18"/>
+<text text-anchor="middle" x="117.15" y="-14.3" font-family="Times,serif" font-size="14.00">ID: 2</text>
+</g>
+</g>
+</svg>
 
 </div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="c1"># Customize instance; could be turned into a Dockerfile in the future</span>
-<span class="c1">## install packages</span>
-<span class="o">{</span> cat <span class="s">&lt;&lt;eof</span>
-<span class="s">apt-get update</span>
-<span class="s">apt-get install -y ruby tree less file rsync pandoc graphviz</span>
-<span class="s">pip install bash_kernel graphviz</span>
-<span class="s">python -m bash_kernel.install</span>
+<h3 id="A-Two-node-Directed-Graph">A Two-node Directed Graph<a class="anchor-link" href="#A-Two-node-Directed-Graph">&#182;</a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Digraph object</span>
+<span class="n">dot</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">()</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">graph_attr</span><span class="p">[</span><span class="s1">&#39;rankdir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;LR&#39;</span>
 
-<span class="s">eof</span>
-<span class="o">}</span> <span class="p">|</span> docker <span class="nb">exec</span> -i -u root jupyter-lab /bin/bash
+<span class="c1"># Add nodes 1 and 2</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s2">&quot;ID: 1&quot;</span><span class="p">)</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s2">&quot;ID: 2&quot;</span><span class="p">)</span>
 
-<span class="c1">## create aliases file</span>
-<span class="o">{</span> cat <span class="s">&lt;&lt;&#39;eof&#39;</span>
-<span class="s">{</span>
-<span class="s">  alias cls=&#39;clear&#39;;</span>
-<span class="s">  alias dir=&#39;ls -la&#39;;</span>
-<span class="s">  alias h=&#39;history&#39;;</span>
-<span class="s">  alias more=&#39;less -iX&#39;;</span>
-<span class="s">  export HISTCONTROL=ignoredups:ignorespace;</span>
-<span class="s">  export HISTFILESIZE=50000;</span>
-<span class="s">  export HISTSIZE=50000;</span>
-<span class="s">  export HISTTIMEFORMAT=&#39;%t%F %T%t&#39;;</span>
-<span class="s">  export PAGER=&#39;less -iX &#39;;</span>
-<span class="s">  export IGNOREEOF=20;</span>
-<span class="s">  export PS1=&#39;\u@\h: \w\n\$ &#39;;</span>
-<span class="s">}</span>
-<span class="s">eof</span>
-<span class="o">}</span> <span class="p">|</span>
-docker <span class="nb">exec</span> -i jupyter-lab /bin/bash -c <span class="s1">&#39;cat &gt; ~/.bash_aliases&#39;</span>
+<span class="c1"># Add edge between 1 and 2</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">edges</span><span class="p">([</span><span class="s1">&#39;12&#39;</span><span class="p">])</span>
+
+<span class="c1"># Visualize the graph</span>
+<span class="n">dot</span>
 </pre></div>
-<hr>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+
+
+
+<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="177pt" height="44pt"
+ viewBox="0.00 0.00 176.59 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>%3</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-40 172.59,-40 172.59,4 -4,4"/>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="black" cx="33.15" cy="-18" rx="33.29" ry="18"/>
+<text text-anchor="middle" x="33.15" y="-14.3" font-family="Times,serif" font-size="14.00">ID: 1</text>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="black" cx="135.44" cy="-18" rx="33.29" ry="18"/>
+<text text-anchor="middle" x="135.44" y="-14.3" font-family="Times,serif" font-size="14.00">ID: 2</text>
+</g>
+<!-- 1&#45;&gt;2 -->
+<g id="edge1" class="edge">
+<title>1&#45;&gt;2</title>
+<path fill="none" stroke="black" d="M66.43,-18C74.58,-18 83.44,-18 92,-18"/>
+<polygon fill="black" stroke="black" points="92.22,-21.5 102.22,-18 92.22,-14.5 92.22,-21.5"/>
+</g>
+</g>
+</svg>
 
 </div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="c1"># Get the token</span>
-<span class="nv">token</span><span class="o">=</span><span class="k">$(</span> grep -m1 <span class="nv">token</span><span class="o">=</span> /tmp/docker.log <span class="p">|</span> cut -d<span class="o">=</span> -f2 <span class="k">)</span>
-<span class="nb">echo</span> http://localhost:8080/lab?token<span class="o">=</span><span class="si">${</span><span class="nv">token</span><span class="si">}</span>
+<h2 id="Directed-Graph-with-Cycles">Directed Graph with Cycles<a class="anchor-link" href="#Directed-Graph-with-Cycles">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Digraph object</span>
+<span class="n">dot</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">()</span>
+
+<span class="c1"># Left to right, instead top down</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">graph_attr</span><span class="p">[</span><span class="s1">&#39;rankdir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;LR&#39;</span>
+
+<span class="c1"># Add nodes 1 and 2</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s2">&quot;ID: 1&quot;</span><span class="p">)</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s2">&quot;ID: 2&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add edge between 1 and 2</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">edges</span><span class="p">([</span><span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">,</span> <span class="s1">&#39;22&#39;</span><span class="p">])</span>
+
+<span class="c1"># Visualize the graph</span>
+<span class="n">dot</span>
 </pre></div>
-<hr>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+
+
+
+<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="177pt" height="62pt"
+ viewBox="0.00 0.00 176.59 62.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 58)">
+<title>%3</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-58 172.59,-58 172.59,4 -4,4"/>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="black" cx="33.15" cy="-18" rx="33.29" ry="18"/>
+<text text-anchor="middle" x="33.15" y="-14.3" font-family="Times,serif" font-size="14.00">ID: 1</text>
+</g>
+<!-- 1&#45;&gt;1 -->
+<g id="edge2" class="edge">
+<title>1&#45;&gt;1</title>
+<path fill="none" stroke="black" d="M15.71,-33.54C10.8,-43.91 16.61,-54 33.15,-54 44,-54 50.23,-49.65 51.85,-43.74"/>
+<polygon fill="black" stroke="black" points="55.29,-43.04 50.59,-33.54 48.34,-43.9 55.29,-43.04"/>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="black" cx="135.44" cy="-18" rx="33.29" ry="18"/>
+<text text-anchor="middle" x="135.44" y="-14.3" font-family="Times,serif" font-size="14.00">ID: 2</text>
+</g>
+<!-- 1&#45;&gt;2 -->
+<g id="edge1" class="edge">
+<title>1&#45;&gt;2</title>
+<path fill="none" stroke="black" d="M64.24,-11.75C73.57,-11.26 84.02,-11.13 93.94,-11.36"/>
+<polygon fill="black" stroke="black" points="93.9,-14.86 104.02,-11.74 94.16,-7.87 93.9,-14.86"/>
+</g>
+<!-- 2&#45;&gt;1 -->
+<g id="edge3" class="edge">
+<title>2&#45;&gt;1</title>
+<path fill="none" stroke="black" d="M104.02,-24.26C94.66,-24.75 84.21,-24.87 74.3,-24.63"/>
+<polygon fill="black" stroke="black" points="74.36,-21.13 64.24,-24.25 74.1,-28.12 74.36,-21.13"/>
+</g>
+<!-- 2&#45;&gt;2 -->
+<g id="edge4" class="edge">
+<title>2&#45;&gt;2</title>
+<path fill="none" stroke="black" d="M118,-33.54C113.09,-43.91 118.91,-54 135.44,-54 146.29,-54 152.53,-49.65 154.14,-43.74"/>
+<polygon fill="black" stroke="black" points="157.58,-43.04 152.88,-33.54 150.64,-43.9 157.58,-43.04"/>
+</g>
+</g>
+</svg>
 
 </div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="c1"># Commands for connecting to instance for interactive session, if needed</span>
-<span class="c1">## as a regular user</span>
-docker <span class="nb">exec</span> -it jupyter-lab /bin/bash
-<span class="c1">## as root</span>
-docker <span class="nb">exec</span> -it -u root jupyter-lab /bin/bash
+<h2 id="Right-to-Left">Right to Left<a class="anchor-link" href="#Right-to-Left">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a directed graph object</span>
+<span class="n">dot</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">()</span>
+
+<span class="c1"># Left to right, instead top down</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">graph_attr</span><span class="p">[</span><span class="s1">&#39;rankdir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;RL&#39;</span>
+
+<span class="c1"># Add nodes 1 and 2</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s2">&quot;ID: sha</span><span class="se">\n</span><span class="s2">metadata: something&quot;</span><span class="p">)</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add edge between 1 and 2</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">edges</span><span class="p">([</span><span class="s1">&#39;21&#39;</span><span class="p">])</span>
+
+<span class="c1"># Visualize the graph</span>
+<span class="n">dot</span>
 </pre></div>
-<hr>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+
+
+
+<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="356pt" height="62pt"
+ viewBox="0.00 0.00 355.68 61.74" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 57.74)">
+<title>%3</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-57.74 351.68,-57.74 351.68,4 -4,4"/>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="black" cx="118.79" cy="-26.87" rx="118.59" ry="26.74"/>
+<text text-anchor="middle" x="118.79" y="-30.67" font-family="Times,serif" font-size="14.00">ID: sha</text>
+<text text-anchor="middle" x="118.79" y="-15.67" font-family="Times,serif" font-size="14.00">metadata: something</text>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="black" cx="310.63" cy="-26.87" rx="37.09" ry="18"/>
+<text text-anchor="middle" x="310.63" y="-23.17" font-family="Times,serif" font-size="14.00">world</text>
+</g>
+<!-- 2&#45;&gt;1 -->
+<g id="edge1" class="edge">
+<title>2&#45;&gt;1</title>
+<path fill="none" stroke="black" d="M273.48,-26.87C265.66,-26.87 256.96,-26.87 247.79,-26.87"/>
+<polygon fill="black" stroke="black" points="247.67,-23.37 237.67,-26.87 247.67,-30.37 247.67,-23.37"/>
+</g>
+</g>
+</svg>
 
 </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dot</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>digraph {
+	graph [rankdir=RL]
+	1 [label=&#34;ID: sha
+metadata: something&#34;]
+	2 [label=world]
+	2 -&gt; 1
+}
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span><span class="c1"># Clear all outputs from notebooks and convert to HTML with output</span>
-rm -rf html markdown
-mkdir -p html markdown
-<span class="k">for</span> nb <span class="k">in</span> *.ipynb <span class="p">;</span> <span class="k">do</span>
-    jupyter nbconvert --to notebook --clear-output --inplace <span class="si">${</span><span class="nv">nb</span><span class="si">}</span>
-    jupyter nbconvert --to html --execute --output html/<span class="si">${</span><span class="nv">nb</span><span class="p">%.ipynb</span><span class="si">}</span> <span class="si">${</span><span class="nv">nb</span><span class="si">}</span>
-    jupyter nbconvert --to markdown markdown/<span class="si">${</span><span class="nv">nb</span><span class="p">%.ipynb</span><span class="si">}</span> <span class="si">${</span><span class="nv">nb</span><span class="si">}</span>
-<span class="k">done</span>
+<h2 id="Raw-DOT">Raw DOT<a class="anchor-link" href="#Raw-DOT">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Source</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    digraph &quot;the holy hand grenade&quot; {</span>
+<span class="s1">        rankdir=LR;</span>
+<span class="s1">        1</span>
+<span class="s1">        2</span>
+<span class="s1">        3</span>
+<span class="s1">        lob</span>
+<span class="s1">        1 -&gt; 2</span>
+<span class="s1">        2 -&gt; 3</span>
+<span class="s1">        3 -&gt; lob</span>
+<span class="s1">    }</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">src</span>
 </pre></div>
-<hr>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+
+
+
+<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: the holy hand grenade Pages: 1 -->
+<svg width="332pt" height="44pt"
+ viewBox="0.00 0.00 332.00 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>the holy hand grenade</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-40 328,-40 328,4 -4,4"/>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="black" cx="117" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="117" y="-14.3" font-family="Times,serif" font-size="14.00">2</text>
+</g>
+<!-- 1&#45;&gt;2 -->
+<g id="edge1" class="edge">
+<title>1&#45;&gt;2</title>
+<path fill="none" stroke="black" d="M54.4,-18C62.39,-18 71.31,-18 79.82,-18"/>
+<polygon fill="black" stroke="black" points="79.92,-21.5 89.92,-18 79.92,-14.5 79.92,-21.5"/>
+</g>
+<!-- 3 -->
+<g id="node3" class="node">
+<title>3</title>
+<ellipse fill="none" stroke="black" cx="207" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="207" y="-14.3" font-family="Times,serif" font-size="14.00">3</text>
+</g>
+<!-- 2&#45;&gt;3 -->
+<g id="edge2" class="edge">
+<title>2&#45;&gt;3</title>
+<path fill="none" stroke="black" d="M144.4,-18C152.39,-18 161.31,-18 169.82,-18"/>
+<polygon fill="black" stroke="black" points="169.92,-21.5 179.92,-18 169.92,-14.5 169.92,-21.5"/>
+</g>
+<!-- lob -->
+<g id="node4" class="node">
+<title>lob</title>
+<ellipse fill="none" stroke="black" cx="297" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="297" y="-14.3" font-family="Times,serif" font-size="14.00">lob</text>
+</g>
+<!-- 3&#45;&gt;lob -->
+<g id="edge3" class="edge">
+<title>3&#45;&gt;lob</title>
+<path fill="none" stroke="black" d="M234.4,-18C242.39,-18 251.31,-18 259.82,-18"/>
+<polygon fill="black" stroke="black" points="259.92,-21.5 269.92,-18 259.92,-14.5 259.92,-21.5"/>
+</g>
+</g>
+</svg>
 
 </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">graphviz</span> <span class="kn">import</span> <span class="n">Source</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    digraph &quot;the holy hand grenade&quot; {</span>
+<span class="s1">        rankdir=RL;</span>
+<span class="s1">        1</span>
+<span class="s1">        2</span>
+<span class="s1">        3</span>
+<span class="s1">        lob</span>
+<span class="s1">        2 -&gt; 1</span>
+<span class="s1">        3 -&gt; 2</span>
+<span class="s1">        lob -&gt; 3</span>
+<span class="s1">    }</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">src</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+
+
+
+<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: the holy hand grenade Pages: 1 -->
+<svg width="332pt" height="44pt"
+ viewBox="0.00 0.00 332.00 44.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>the holy hand grenade</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-40 328,-40 328,4 -4,4"/>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="black" cx="117" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="117" y="-14.3" font-family="Times,serif" font-size="14.00">2</text>
+</g>
+<!-- 2&#45;&gt;1 -->
+<g id="edge1" class="edge">
+<title>2&#45;&gt;1</title>
+<path fill="none" stroke="black" d="M89.6,-18C81.61,-18 72.69,-18 64.18,-18"/>
+<polygon fill="black" stroke="black" points="64.08,-14.5 54.08,-18 64.08,-21.5 64.08,-14.5"/>
+</g>
+<!-- 3 -->
+<g id="node3" class="node">
+<title>3</title>
+<ellipse fill="none" stroke="black" cx="207" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="207" y="-14.3" font-family="Times,serif" font-size="14.00">3</text>
+</g>
+<!-- 3&#45;&gt;2 -->
+<g id="edge2" class="edge">
+<title>3&#45;&gt;2</title>
+<path fill="none" stroke="black" d="M179.6,-18C171.61,-18 162.69,-18 154.18,-18"/>
+<polygon fill="black" stroke="black" points="154.08,-14.5 144.08,-18 154.08,-21.5 154.08,-14.5"/>
+</g>
+<!-- lob -->
+<g id="node4" class="node">
+<title>lob</title>
+<ellipse fill="none" stroke="black" cx="297" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="297" y="-14.3" font-family="Times,serif" font-size="14.00">lob</text>
+</g>
+<!-- lob&#45;&gt;3 -->
+<g id="edge3" class="edge">
+<title>lob&#45;&gt;3</title>
+<path fill="none" stroke="black" d="M269.6,-18C261.61,-18 252.69,-18 244.18,-18"/>
+<polygon fill="black" stroke="black" points="244.08,-14.5 234.08,-18 244.08,-21.5 244.08,-14.5"/>
+</g>
+</g>
+</svg>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="A-Tree">A Tree<a class="anchor-link" href="#A-Tree">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Digraph object</span>
+<span class="n">dot</span> <span class="o">=</span> <span class="n">Digraph</span><span class="p">()</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">graph_attr</span><span class="p">[</span><span class="s1">&#39;rankdir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;LR&#39;</span>
+
+<span class="c1"># Add nodes</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add edges</span>
+<span class="n">dot</span><span class="o">.</span><span class="n">edges</span><span class="p">([</span><span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="s1">&#39;13&#39;</span><span class="p">,</span> <span class="s1">&#39;35&#39;</span><span class="p">])</span>
+
+<span class="c1"># Visualize the graph</span>
+<span class="n">dot</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+
+
+
+<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="242pt" height="98pt"
+ viewBox="0.00 0.00 242.00 98.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 94)">
+<title>%3</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-94 238,-94 238,4 -4,4"/>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-45" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-41.3" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- 3 -->
+<g id="node2" class="node">
+<title>3</title>
+<ellipse fill="none" stroke="black" cx="117" cy="-72" rx="27" ry="18"/>
+<text text-anchor="middle" x="117" y="-68.3" font-family="Times,serif" font-size="14.00">3</text>
+</g>
+<!-- 1&#45;&gt;3 -->
+<g id="edge2" class="edge">
+<title>1&#45;&gt;3</title>
+<path fill="none" stroke="black" d="M52.05,-52.38C61.44,-55.26 72.36,-58.61 82.5,-61.72"/>
+<polygon fill="black" stroke="black" points="81.7,-65.14 92.29,-64.72 83.75,-58.45 81.7,-65.14"/>
+</g>
+<!-- 2 -->
+<g id="node3" class="node">
+<title>2</title>
+<ellipse fill="none" stroke="black" cx="117" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="117" y="-14.3" font-family="Times,serif" font-size="14.00">2</text>
+</g>
+<!-- 1&#45;&gt;2 -->
+<g id="edge1" class="edge">
+<title>1&#45;&gt;2</title>
+<path fill="none" stroke="black" d="M52.05,-37.62C61.44,-34.74 72.36,-31.39 82.5,-28.28"/>
+<polygon fill="black" stroke="black" points="83.75,-31.55 92.29,-25.28 81.7,-24.86 83.75,-31.55"/>
+</g>
+<!-- 5 -->
+<g id="node4" class="node">
+<title>5</title>
+<ellipse fill="none" stroke="black" cx="207" cy="-72" rx="27" ry="18"/>
+<text text-anchor="middle" x="207" y="-68.3" font-family="Times,serif" font-size="14.00">5</text>
+</g>
+<!-- 3&#45;&gt;5 -->
+<g id="edge3" class="edge">
+<title>3&#45;&gt;5</title>
+<path fill="none" stroke="black" d="M144.4,-72C152.39,-72 161.31,-72 169.82,-72"/>
+<polygon fill="black" stroke="black" points="169.92,-75.5 179.92,-72 169.92,-68.5 169.92,-75.5"/>
+</g>
+</g>
+</svg>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 </body>
 
