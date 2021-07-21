@@ -14368,7 +14368,7 @@ mkdir -p html markdown
 <span class="k">for</span> nb <span class="k">in</span> *.ipynb <span class="p">;</span> <span class="k">do</span>
     jupyter nbconvert --to notebook --clear-output --inplace <span class="si">${</span><span class="nv">nb</span><span class="si">}</span>
     jupyter nbconvert --to html --execute --output html/<span class="si">${</span><span class="nv">nb</span><span class="p">%.ipynb</span><span class="si">}</span> <span class="si">${</span><span class="nv">nb</span><span class="si">}</span>
-    jupyter nbconvert --to markdown markdown/<span class="si">${</span><span class="nv">nb</span><span class="p">%.ipynb</span><span class="si">}</span> <span class="si">${</span><span class="nv">nb</span><span class="si">}</span>
+    jupyter nbconvert --to markdown --output markdown/<span class="si">${</span><span class="nv">nb</span><span class="p">%.ipynb</span><span class="si">}</span> <span class="si">${</span><span class="nv">nb</span><span class="si">}</span>
 <span class="k">done</span>
 </pre></div>
 <hr>
